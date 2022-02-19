@@ -12,7 +12,7 @@
             <div class="d-flex flex-row">
               <a href="#" class="btn new">
                 <i
-                  style="font-size: 30px"
+                  style="font-size: 30px; color: rgb(61, 61, 226)"
                   class="fa fa-shopping-cart"
                   aria-hidden="true"
                 ></i>

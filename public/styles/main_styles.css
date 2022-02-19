@@ -139,15 +139,7 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection,
-h2::selection,
-h3::selection,
-h4::selection,
-h5::selection,
-h6::selection
-{
 
-}
 ::-webkit-input-placeholder
 {
 	font-size: 16px !important;
@@ -721,7 +713,6 @@ section
 	display: block;
 	position: relative;
 	border-bottom: solid 1px #b5aec4;
-	vertical-align: middle;
 }
 .menu_item > a
 {
@@ -1067,13 +1058,13 @@ section
 {
 	font-size: 14px;
 }
-.product_price
+.price
 {
 	font-size: 16px;
 	color: #fe4c50;
 	font-weight: 600;
 }
-.product_price span
+.product_price_discount
 {
 	font-size: 12px;
 	margin-left: 10px;

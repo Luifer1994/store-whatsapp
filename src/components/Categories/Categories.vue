@@ -7,7 +7,7 @@
             <div class="bbb_viewed_title_container">
               <h3 class="bbb_viewed_title">Categorias</h3>
             </div>
-            <div class="bbb_viewed_slider_container">
+            <!-- <div class="bbb_viewed_slider_container">
               <div class="owl-carousel owl-theme bbb_viewed_slider">
                 <div class="owl-item">
                   <div
@@ -37,7 +37,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

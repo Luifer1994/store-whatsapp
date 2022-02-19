@@ -1,12 +1,36 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+import VuexPersistence from "vuex-persist";
+/* import axios from "axios"; */
 
 export default createStore({
-  state: {
+  state() {
+    return {
+      cart: [],
+    };
   },
   mutations: {
+    addToCart(state, product) {
+      if (state.cart.length < 1) {
+        state.cart.push(product);
+      } else {
+        let resultado = state.cart.find((item) => item.id === product.id);
+
+        if (typeof resultado !== "undefined") {
+          for (let index = 0; index < state.cart.length; index++) {
+            if (state.cart[index].id === product.id) {
+              state.cart[index] = product;
+            }
+          }
+        } else {
+          state.cart.push(product);
+        }
+      }
+    },
   },
   actions: {
+    getProduct({ commit }, product) {
+      commit("addToCart", product);
+    },
   },
-  modules: {
-  }
-})
+  plugins: [new VuexPersistence().plugin],
+});
