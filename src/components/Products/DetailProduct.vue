@@ -16,13 +16,15 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
                     <router-link to="/" style="color: rgb(230, 59, 59)">
-                      <i class="fa fa-long-arrow-left"></i>
+                      <i class="fas fa-arrow-left"></i>
                       <span class="ml-1">Atras</span>
                     </router-link>
                   </div>
                 </div>
                 <div class="mt-4 mb-3">
-                  <span class="text-uppercase text-muted brand">Frutas</span>
+                  <span class="text-uppercase text-muted brand">
+                    {{ category }}
+                  </span>
                   <h3 class="text-uppercase name-product">
                     {{ product.name }}
                   </h3>
@@ -61,7 +63,7 @@
                     @click="add()"
                     class="btn btn-danger text-uppercase mr-2 px-4"
                   >
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <i class="fas fa-shopping-bag"></i>
                     Agregar
                   </button>
                 </div>
@@ -84,6 +86,7 @@ export default {
       urlApi: process.env.VUE_APP_URL_API,
       product: {},
       quantity: 1,
+      category: "",
     };
   },
   methods: {
@@ -93,10 +96,22 @@ export default {
         this.urlApi + "products-by-id/" + this.$route.params.id
       );
       this.product = res.data.data;
+      this.category = res.data.data.category.name;
     },
     add() {
-      this.product.quantity = this.quantity;
-      this.$store.dispatch("getProduct", this.product);
+      var item = new Object();
+      item.id = this.product.id;
+      item.name = this.product.name;
+      item.image = this.product.image;
+      item.reference = this.product.reference;
+      if (this.product.with_discount) {
+        item.price = this.product.price_with_discount;
+      } else {
+        item.price = this.product.price;
+      }
+      item.quantity = this.quantity;
+      this.$store.dispatch("getProduct", item);
+      this.emitter.emit("add");
     },
     exist() {
       if (this.$store.state.cart) {

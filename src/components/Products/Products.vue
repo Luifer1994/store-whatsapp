@@ -47,7 +47,10 @@
                 </div>
               </div>
               <div class="red_button add_to_cart_button">
-                <a href="#">add to cart</a>
+                <a href="#">
+                  <i class="fas fa-shopping-bag"></i>
+                  Agregar al carrito
+                </a>
               </div>
             </div>
           </router-link>

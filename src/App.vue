@@ -1,6 +1,6 @@
 <template>
   <Header></Header>
-  <Categories v-if="this.$route.name !== 'DetailProdut'"></Categories>
+  <Categories v-if="this.$route.name === 'Home'"></Categories>
   <router-view />
   <Footer></Footer>
 </template>

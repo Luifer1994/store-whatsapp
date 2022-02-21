@@ -8,19 +8,19 @@
               <i class="fa fa-truck" aria-hidden="true"></i>
             </div>
             <div class="benefit_content">
-              <h6>free shipping</h6>
-              <p>Suffered Alteration in Some Form</p>
+              <h6>Domicilio gratis</h6>
+              <p>Por compras mayores a $50.000</p>
             </div>
           </div>
         </div>
         <div class="col-lg-3 benefit_col">
           <div class="benefit_item d-flex flex-row align-items-center">
             <div class="benefit_icon">
-              <i class="fa fa-money" aria-hidden="true"></i>
+              <i class="fas fa-money-bill"></i>
             </div>
             <div class="benefit_content">
-              <h6>cach on delivery</h6>
-              <p>The Internet Tend To Repeat</p>
+              <h6>PAGA CUANDO RECIBAS</h6>
+              <p>Paga cuando recibas tu pedido con tarjeta o efectivo</p>
             </div>
           </div>
         </div>
