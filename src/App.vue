@@ -1,7 +1,7 @@
 <template>
   <Header></Header>
   <Categories v-if="this.$route.name === 'Home'"></Categories>
-  <router-view />
+  <router-view :key="$route.path" />
   <Footer></Footer>
 </template>
 <script>

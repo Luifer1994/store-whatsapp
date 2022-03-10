@@ -74,7 +74,17 @@ export default {
       page: 1,
       noResult: false,
       message: "",
+      category_id: 0,
     };
+  },
+  created() {
+    this.emitter.on("categoryFilter", (id) => {
+      this.category_id = id;
+      this.page = 1;
+      this.products = [];
+      this.noResult = false;
+      this.getProducts();
+    });
   },
   mounted() {
     this.getProducts();
@@ -84,7 +94,11 @@ export default {
       try {
         if (!this.noResult) {
           const result = await axios.get(
-            this.urlApi + "products-list?page=" + this.page
+            this.urlApi +
+              "products-list?page=" +
+              this.page +
+              "&category=" +
+              this.category_id
           );
           if (result.data.data.data.length) {
             this.products.push(...result.data.data.data);
