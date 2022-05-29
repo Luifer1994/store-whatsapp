@@ -31,23 +31,11 @@
                 <h5 class="price">${{ product.price }}</h5>
               </td>
               <td data-th="Quantity">
-                <input
-                  style="width: 50px"
-                  type="number"
-                  class="text-center"
-                  v-model="quantitys[products.indexOf(product)].quantity"
-                  min="1"
-                />
+                <h5 class="price">{{ quantitys[products.indexOf(product)].quantity }}</h5>
+               
               </td>
               <td class="actions">
                 <div class="btn-group btn-group-sm" role="group">
-                  <button
-                    type="button"
-                    @click="update(product)"
-                    class="btn btn-success"
-                  >
-                    <i class="fas fa-sync"></i>
-                  </button>
                   <button
                     type="button"
                     @click="remove(product)"
@@ -62,14 +50,15 @@
         </table>
         <div class="float-right text-right">
           <h5>Total:</h5>
-          <h3>$ {{ total }}</h3>
+          <h3 class="price">$ {{ total }}</h3>
         </div>
       </div>
     </div>
     <div class="mt-4 d-flex justify-content-end">
-      <button class="btn btn-danger">Realizar pedido</button>
+      <router-link to="/create-order" class="btn btn-warning text-white">Realizar pedido</router-link>
     </div>
   </div>
+  
 </template>
 <script>
 export default {
@@ -92,15 +81,13 @@ export default {
         this.total += element.price * element.quantity;
       });
     },
-    update(item) {
-      this.$store.dispatch("getProduct", item);
-      this.getProducts();
-      this.emitter.emit("add");
-    },
     remove(product) {
       this.$store.commit("remove", product);
       this.getProducts();
       this.emitter.emit("add");
+      if (this.$store.state.cart.length < 1) {
+        this.total = 0;
+      }
     },
   },
 };

@@ -7,15 +7,15 @@
             <div class="d-flex justify-content-between align-items-center">
               <router-link to="/">
                 <img
-                  src="https://www.megatiendas.co/static/media/logo-megatiendas.7b88c884.png"
-                  width="80"
+                  src="https://www.evertecinc.com/wp-content/uploads/2020/07/logo-evertec.png"
+                  width="150"
                   alt=""
                 />
               </router-link>
-              <div class="d-flex flex-row">
+              <div class="d-flex flex-row mr-2">
                 <router-link to="/cart" class="new">
                   <i
-                    style="font-size: 25px; color: rgb(50, 50, 185)"
+                    style="font-size: 40px; color: #FF6C0C"
                     class="fas fa-shopping-bag"
                   ></i>
 

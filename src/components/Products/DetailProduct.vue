@@ -15,42 +15,22 @@
               <div class="product p-4">
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
-                    <router-link to="/" style="color: rgb(230, 59, 59)">
+                    <router-link to="/" style="color:#FF6C0C">
                       <i class="fas fa-arrow-left"></i>
                       <span class="ml-1">Atras</span>
                     </router-link>
                   </div>
                 </div>
                 <div class="mt-4 mb-3">
-                  <span class="text-uppercase text-muted brand">
-                    {{ category }}
-                  </span>
                   <h3 class="text-uppercase name-product">
                     {{ product.name }}
                   </h3>
                   <div class="price d-flex flex-row align-items-center">
-                    <span v-if="!product.with_discount" class="act-price">
-                      $ {{ product.price }}
-                    </span>
-                    <span v-else class="act-price">
-                      $ {{ product.price_with_discount }}
-                    </span>
-                    <div class="ml-2">
-                      <small v-if="product.with_discount" class="dis-price">
-                        ${{ product.price }}
-                      </small>
-                      <span v-if="product.with_discount" class="discount ml-2">
-                        {{ product.percentage_discount }}%
-                      </span>
-                    </div>
+                    <span class="act-price"> $ {{ product.price }} </span>
                   </div>
                 </div>
                 <ul>
-                  <li>SKU: {{ product.reference }}</li>
-                  <li>{{ product.pum }}</li>
-                  <li>Marca: {{ product.mark }}</li>
-                  <li>Unidad de medida: {{ product.measure_unit }}</li>
-                  <li></li>
+                  <li>Descripción: {{ product.description }}</li>
                 </ul>
 
                 <div class="sizes mt-5">
@@ -61,7 +41,7 @@
                 <div class="cart mt-4 align-items-center">
                   <button
                     @click="add()"
-                    class="btn btn-danger text-uppercase mr-2 px-4"
+                    class="btn btn-warning text-uppercase text-white mr-2 px-4"
                   >
                     <i class="fas fa-shopping-bag"></i>
                     Agregar
@@ -93,7 +73,7 @@ export default {
     async getProduct() {
       this.exist();
       const res = await axios.get(
-        this.urlApi + "products-by-id/" + this.$route.params.id
+        this.urlApi + "products-detail/" + this.$route.params.id
       );
       this.product = res.data.data;
       this.category = res.data.data.category.name;
@@ -103,12 +83,7 @@ export default {
       item.id = this.product.id;
       item.name = this.product.name;
       item.image = this.product.image;
-      item.reference = this.product.reference;
-      if (this.product.with_discount) {
-        item.price = this.product.price_with_discount;
-      } else {
-        item.price = this.product.price;
-      }
+      item.price = this.product.price;
       item.quantity = this.quantity;
       this.$store.dispatch("getProduct", item);
       this.emitter.emit("add");
@@ -137,57 +112,8 @@ export default {
 }
 
 .act-price {
-  color: red;
+  color: #FF6C0C;
   font-weight: 700;
-}
-
-.dis-price {
-  text-decoration: line-through;
-}
-
-.about {
-  font-size: 14px;
-}
-
-.color {
-  margin-bottom: 10px;
-}
-
-label.radio {
-  cursor: pointer;
-}
-
-label.radio input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-label.radio span {
-  padding: 2px 9px;
-  border: 2px solid #ff0000;
-  display: inline-block;
-  color: #ff0000;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-
-label.radio input:checked + span {
-  border-color: #ff0000;
-  background-color: #ff0000;
-  color: #fff;
-}
-
-.btn-danger {
-  background-color: #ff0000 !important;
-  border-color: #ff0000 !important;
-}
-
-.btn-danger:hover {
-  background-color: #da0606 !important;
-  border-color: #da0606 !important;
 }
 
 .btn-danger:focus {
@@ -203,14 +129,6 @@ label.radio input:checked + span {
 .act-price {
   font-weight: bold;
   font-size: 30px;
-}
-.dis-price {
-  font-size: 20px;
-  color: rgb(117, 117, 117);
-}
-.discount {
-  color: #da0606;
-  font-size: 20px;
 }
 .quantity {
   font-weight: bold;

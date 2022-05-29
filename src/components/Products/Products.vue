@@ -13,42 +13,22 @@
                 <div class="product_image">
                   <img :src="product.image" alt="" />
                 </div>
-
-                <div
-                  v-if="product.with_discount"
-                  class="
-                    product_bubble product_bubble_right product_bubble_red
-                    d-flex
-                    flex-column
-                    align-items-center
-                  "
-                >
-                  <span>-{{ product.percentage_discount }} %</span>
-                </div>
                 <div class="product_info">
                   <h5 class="product_name text-uppercase">
                     {{ product.name }}
                   </h5>
-                  <h6>SKU: {{ product.reference }}</h6>
-                  <h6>{{ product.pum }}</h6>
+                 
+                 
                   <div class="product_price">
-                    <span v-if="product.with_discount" class="price">
-                      ${{ product.price_with_discount }}
-                    </span>
-                    <span v-else class="price"> ${{ product.price }} </span>
+                    <span class="price"> ${{ product.price }} </span>
 
-                    <span
-                      v-if="product.with_discount"
-                      class="product_price_discount"
-                    >
-                      ${{ product.price_discount }}
-                    </span>
+                   
                   </div>
                 </div>
               </div>
               <div class="red_button add_to_cart_button">
                 <a href="#">
-                  <i class="fas fa-shopping-bag"></i>
+                  <i class="fas fa-shopping-bag m-1"></i>
                   Agregar al carrito
                 </a>
               </div>
@@ -77,15 +57,6 @@ export default {
       category_id: 0,
     };
   },
-  created() {
-    this.emitter.on("categoryFilter", (id) => {
-      this.category_id = id;
-      this.page = 1;
-      this.products = [];
-      this.noResult = false;
-      this.getProducts();
-    });
-  },
   mounted() {
     this.getProducts();
   },
@@ -96,9 +67,7 @@ export default {
           const result = await axios.get(
             this.urlApi +
               "products-list?page=" +
-              this.page +
-              "&category=" +
-              this.category_id
+              this.page
           );
           if (result.data.data.data.length) {
             this.products.push(...result.data.data.data);
@@ -151,7 +120,7 @@ export default {
 
   .product-item {
     width: 260px;
-    height: 425px;
+    height: 390px;
   }
 }
 .product_name {
@@ -163,6 +132,7 @@ export default {
   white-space: pre;
 }
 .add_to_cart_button {
-  margin-top: 45px;
+  margin-top: 10px;
+  background-color: #FF6C0C;
 }
 </style>

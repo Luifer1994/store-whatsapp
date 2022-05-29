@@ -617,7 +617,7 @@ section
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	background: #fe4c50;
+	background: #292929;
 	font-size: 12px;
 	color: #FFFFFF;
 }
@@ -1062,7 +1062,7 @@ section
 .price
 {
 	font-size: 16px;
-	color: #fe4c50;
+	color: #FF6C0C;
 	font-weight: 600;
 }
 .product_price_discount
@@ -1365,7 +1365,7 @@ section
 .benefit_icon i
 {
 	font-size: 30px;
-	color: #fe4c50;
+	color: #FF6C0C;
 }
 .benefit_content
 {

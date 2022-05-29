@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import DetailProduct from "@/components/Products/DetailProduct";
 import Cart from "@/components/Cart/Cart";
+import CreateOrder from "@/components/Orders/Create";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/cart",
     name: "Cart",
     component: Cart,
+  },
+  {
+    path: "/create-order",
+    name: "CreateOrder",
+    component: CreateOrder,
   },
 ];
 

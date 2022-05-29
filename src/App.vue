@@ -1,17 +1,14 @@
 <template>
   <Header></Header>
-  <Categories v-if="this.$route.name === 'Home'"></Categories>
   <router-view :key="$route.path" />
   <Footer></Footer>
 </template>
 <script>
 import Header from "@/components/Layout/Header";
-import Categories from "@/components/Categories/Categories";
 import Footer from "@/components/Layout/Footer";
 export default {
   components: {
     Header,
-    Categories,
     Footer,
   },
 };
